@@ -276,11 +276,12 @@ rank_by_tier = FlexCat({
     "2": ('Monster', 'Minion', 'Elite Monster'),
     "3": ('Villain', 'Monster', 'Elite Monster'),
     "4": ('Villain', 'Elite Monster', 'Monster'),
-    "5": ('Dungeon Boss', 'Villain', 'Elite Monster', 'Monster'),
-    "6": ('Campaign Boss', 'Dungeon Boss', 'Villain', 'Elite Monster'),
-}, val_bias="front_linear")
+    "5": ('Dungeon Boss', 'Villain', 'Elite Monster'),
+    "6": ('Campaign Boss', 'Dungeon Boss', 'Elite Monster'),
+}, key_bias="front_linear", val_bias="front_linear")
 
-random_monster = TruffleShuffle({
+random_monster = FlexCat({
+    'Minion': (
         lambda: f"Novice {rand_adventurer()}",
         lambda: f"{rand_elemental()} Mephit",
         lambda: f"Zombie {rand_race()}",
@@ -307,6 +308,8 @@ random_monster = TruffleShuffle({
         "Owlbear",
         "Winged Kobold",
         lambda: f"{rand_color()} Dragon Hatchling",
+    ),
+    'Monster': (
         "Chimera",
         "Demon Cat",
         "Basilisk",
@@ -329,6 +332,8 @@ random_monster = TruffleShuffle({
         "Flameskull",
         lambda: f"Vampire Spawn, {rand_race()}",
         lambda: f"Young {rand_color()} Dragon",
+    ),
+    'Elite Monster': (
         "Xorn",
         "Bafu",
         "Chupacabra",
@@ -342,6 +347,8 @@ random_monster = TruffleShuffle({
         lambda: f"{rand_elemental()} Elemental",
         lambda: f"Vampire, {rand_race()}",
         lambda: f"{rand_color()} Dragon",
+    ),
+    'Villain': (
         lambda: f"{rand_race()} {rand_adventurer()}",
         lambda: f"{rand_elemental()} Demon",
         lambda: f"Incubus" if percent_true(30) else f"Succubus",
@@ -358,6 +365,8 @@ random_monster = TruffleShuffle({
         "Mind Flayer",
         lambda: f"Adult {rand_color()} Dragon",
         lambda: f"Legendary {rand_race()} {rand_adventurer()}",
+    ),
+    'Dungeon Boss': (
         "Hydra",
         "The Rat King",
         "Behemoth",
@@ -371,6 +380,8 @@ random_monster = TruffleShuffle({
         "Beholder",
         lambda: f"Ancient {rand_color()} Dragon",
         "Ancient Dracolich",
+    ),
+    'Campaign Boss': (
         lambda: f"Elemental Lord of {rand_elemental()}",
         "Goblin King",
         "Balor",
@@ -378,10 +389,11 @@ random_monster = TruffleShuffle({
         "Mummy Pharaoh",
         "Lich King",
         "Beholder Overseer",
-        "Legendary Vampire",
+        lambda: f"Legendary Vampire: {rand_race()} {rand_adventurer()}",
         "Lord of the Pit",
         "Grim Reaper",
         "Flying Spaghetti Monster",
         lambda: f"Legendary {rand_color()} Dragon",
         "The Nameless One",
+    ),
 })

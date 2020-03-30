@@ -71,18 +71,6 @@ class CR:
         return self
 
 
-def type_modifier(monster_type):
-    lookup = {
-        "Minion": 0.75,
-        "Monster": 1.0,
-        "Elite Monster": 1.10,
-        "Villain": 1.20,
-        "Dungeon Boss": 1.30,
-        "Campaign Boss": 1.50,
-    }
-    return lookup[monster_type]
-
-
 monster_stats = {
     "AC": (
         8, 9, 10, 11,
@@ -292,8 +280,7 @@ rank_by_tier = FlexCat({
     "6": ('Campaign Boss', 'Dungeon Boss', 'Villain', 'Elite Monster'),
 }, val_bias="front_linear")
 
-random_monster = FlexCat({
-    'Minion': (
+random_monster = TruffleShuffle({
         lambda: f"Novice {rand_adventurer()}",
         lambda: f"{rand_elemental()} Mephit",
         lambda: f"Zombie {rand_race()}",
@@ -320,8 +307,6 @@ random_monster = FlexCat({
         "Owlbear",
         "Winged Kobold",
         lambda: f"{rand_color()} Dragon Hatchling",
-    ),
-    'Monster': (
         "Chimera",
         "Demon Cat",
         "Basilisk",
@@ -344,8 +329,6 @@ random_monster = FlexCat({
         "Flameskull",
         lambda: f"Vampire Spawn, {rand_race()}",
         lambda: f"Young {rand_color()} Dragon",
-    ),
-    'Elite Monster': (
         "Xorn",
         "Bafu",
         "Chupacabra",
@@ -359,8 +342,6 @@ random_monster = FlexCat({
         lambda: f"{rand_elemental()} Elemental",
         lambda: f"Vampire, {rand_race()}",
         lambda: f"{rand_color()} Dragon",
-    ),
-    'Villain': (
         lambda: f"{rand_race()} {rand_adventurer()}",
         lambda: f"{rand_elemental()} Demon",
         lambda: f"Incubus" if percent_true(30) else f"Succubus",
@@ -377,8 +358,6 @@ random_monster = FlexCat({
         "Mind Flayer",
         lambda: f"Adult {rand_color()} Dragon",
         lambda: f"Legendary {rand_race()} {rand_adventurer()}",
-    ),
-    'Dungeon Boss': (
         "Hydra",
         "The Rat King",
         "Behemoth",
@@ -392,8 +371,6 @@ random_monster = FlexCat({
         "Beholder",
         lambda: f"Ancient {rand_color()} Dragon",
         "Ancient Dracolich",
-    ),
-    'Campaign Boss': (
         lambda: f"Elemental Lord of {rand_elemental()}",
         "Goblin King",
         "Balor",
@@ -401,11 +378,10 @@ random_monster = FlexCat({
         "Mummy Pharaoh",
         "Lich King",
         "Beholder Overseer",
-        lambda: f"Legendary Vampire: {rand_race()} {rand_adventurer()}",
+        "Legendary Vampire",
         "Lord of the Pit",
         "Grim Reaper",
         "Flying Spaghetti Monster",
         lambda: f"Legendary {rand_color()} Dragon",
         "The Nameless One",
-    ),
 })

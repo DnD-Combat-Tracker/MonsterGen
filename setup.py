@@ -19,7 +19,6 @@ setup(
     description="Random Monster Generator",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    license="Free for non-commercial use",
     classifiers=[
         dev_status["Alpha"],
         "Programming Language :: Python :: 3.8",

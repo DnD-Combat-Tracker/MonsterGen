@@ -6,8 +6,7 @@ from MonsterGen.monster_lib import monster_stats, CR, random_monster
 class Monster:
 
     def __init__(self, cr):
-        self.Name = random_monster("Monster")
-
+        self.Name = random_monster()
         self.CR = CR(cr)
         hp_range = monster_stats["HP Range"][self.CR.key]
         self.HP = distribution_range(middle_linear, *hp_range)

@@ -4,7 +4,7 @@
 $ pip install MonsterGen
 ```
 ```python
-from monster_gen.monster import Monster
+from MonsterGen.monster import Monster
 
 print(Monster(10))
 ```

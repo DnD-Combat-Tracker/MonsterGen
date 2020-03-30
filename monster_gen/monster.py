@@ -1,6 +1,6 @@
 import itertools
 from Fortuna import distribution_range, middle_linear
-from monster_lib import monster_stats, CR, random_monster
+from monster_gen.monster_lib import monster_stats, CR, random_monster
 
 
 class Monster:
@@ -25,3 +25,4 @@ class Monster:
 
 if __name__ == '__main__':
     print(Monster(CR.party_adapter(average_level=1, num_players=5, difficulty=2)))
+    print(Monster(10))

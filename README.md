@@ -20,7 +20,7 @@ Save DC: 16
 XP Value: 5900
 ```
 
-## Alternative Calling Signatures
+## Alternate Calling Signatures
 ```python
 from MonsterGen import Monster, CR
 
@@ -38,12 +38,14 @@ Typical Damage: 63 - 68
 Save DC: 16
 XP Value: 5900
 ```
+
 ```python
 from MonsterGen import Monster, CR
 
 monster_cr = CR(10)
 print(Monster(monster_cr))
 ```
+
 ```
 Name: Wraith
 CR: 10
@@ -54,3 +56,7 @@ Typical Damage: 63 - 68
 Save DC: 16
 XP Value: 5900
 ```
+
+## Difficulty Rating
+    Stupid Easy    Easy    Norm    Epic    Legendary
+          -5        -3      0       3          5

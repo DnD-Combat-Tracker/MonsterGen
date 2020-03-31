@@ -2,21 +2,6 @@ from Fortuna import *
 
 
 class CR:
-    """ The CR class is a numeric system representing the relative power of a monster in D&D 5e.
-    This system is a bit funky with values below 1, be careful... here be dragons!
-    CR less than 1 are printed as fractions but valued mathematically as integers [-3, 0].
-    CR(-3) is CR 1/16 - same as CR 0 in the books.
-    CR(-2) is CR 1/8
-    CR(-1) is CR 1/4
-    CR(0) is CR 1/2
-    CR(1)..CR(30) is CR 1 to CR 30
-    Why is this system so crazy? Because wizards are bad at math!
-    And I wanted to ignore the fractions...
-    So that subtracting 1 always takes you to the next CR down.
-    Currently: CR(1) + CR(1) is CR(2)
-    what is CR 1/2 + CR 1/4 ???
-    This is an open question! It may cause me to switch to floats internally, eww.
-    """
 
     def __init__(self, val):
         self.val = smart_clamp(val, -3, 30)
@@ -397,3 +382,17 @@ random_monster = FlexCat({
         "The Nameless One",
     ),
 })
+
+
+if __name__ == '__main__':
+    from MonsterGen import CR
+
+    print(f"CR: {CR(-3)}")
+    print(f"CR: {CR(-2)}")
+    print(f"CR: {CR(-1)}")
+    print(f"CR: {CR(0)}")
+    print(f"CR: {CR(1)}")
+    print(f"CR: {CR(2)}")
+    print(f"CR: {CR(3)}")
+    print('...')
+    print(f"CR: {CR(30)}")

@@ -1,14 +1,14 @@
 # DND API
 
 
-## Monsters
-#### Monsters by Party Composition
+### Monsters
+#### Monster by Party Composition
 [https://dndapi.pythonanywhere.com/monster?avg-level=5&num-players=5&difficulty=1](https://dndapi.pythonanywhere.com/monster?avg-level=5&num-players=5&difficulty=1)
 - avg-level :: 1 to 20
 - num-players :: 1 to 9
 - difficulty :: -5 to 5
 
-#### Monsters by CR & Type
+#### Monster by CR & Type
 [https://dndapi.pythonanywhere.com/monster-cr-type?cr=10&type=Undead](https://dndapi.pythonanywhere.com/monster-cr-type?cr=10&type=Undead)
 - cr :: -3 to 30
 - type :: [Aberration, Beast, Celestial, Construct, Dragon, Elemental, Fey, Fiend, Giant, Humanoid, Monstrosity, Plant, Ooze, Undead]
@@ -26,7 +26,7 @@
 - cr :: -3 to 30
 
 ### Traps
-#### Random Trap by CR only
+#### Trap by CR only
 [https://dndapi.pythonanywhere.com/trap?cr=10)](https://dndapi.pythonanywhere.com/trap?cr=10)
 - cr :: -3 to 30
 

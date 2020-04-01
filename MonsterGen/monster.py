@@ -1,7 +1,6 @@
 import itertools
 from Fortuna import distribution_range, middle_linear, plus_or_minus_linear
-from MonsterGen.monster_lib import monster_stats, CR
-from MonsterGen.monster_lib import random_monster_type
+from MonsterGen.monster_lib import monster_stats, CR, random_monster_type
 from MonsterGen.monster_manual import random_monster_by_type
 
 

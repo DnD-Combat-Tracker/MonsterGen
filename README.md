@@ -10,30 +10,13 @@ MonsterGen is based on Fortuna and Storm by Robert Sharp.
 $ pip install MonsterGen
 ```
 
-## Monster Class
-`Monster(cr, monster_type=None) -> Monster`
+## Index
+- CR
+- Random Monsters
+- Random NPCs
+- Random Traps
+- Random Treasure
 
-- cr: required int, -3 to 30
-- monster_type: optional str, ["Aberration", "Beast", "Celestial", "Construct", "Dragon", "Elemental", "Fey", "Fiend", "Giant", "Humanoid", "Monstrosity", "Plant", "Ooze", "Undead"]
-
-```python
-from MonsterGen import Monster, CR
-
-monster_cr = CR(10)
-print(Monster(monster_cr, monster_type='Aberration'))
-```
-
-```
-Name: Grell
-Type: Aberration
-CR: 7
-Hit Points: 164
-Armor Class: 12
-Attack Bonus: 9
-Typical Damage: 45 - 50
-Save DC: 15
-XP Value: 2900
-```
 
 ## CR Class
 `CR(cr) -> CR`
@@ -43,7 +26,7 @@ The CR class is a numeric system representing the relative power of a monster in
 This system is a bit funky with values below 1, be careful... here be dragons!
 CR less than 1 are printed as fractions but valued mathematically as integers [-3, 0]. See below:
 
-#### CR Mapping
+### CR Mapping
 
 ```python
 from MonsterGen import CR
@@ -71,7 +54,7 @@ CR: 3
 CR: 30
 ```
 
-### Party Adapter Method (Factory Function)
+### Party Adapter Class Method
 `CR.player_adapter(average_level, num_players=5, difficulty=0) -> CR`
 
 Class method for computing CR from party composition and difficulty setting.
@@ -84,7 +67,33 @@ Class method for computing CR from party composition and difficulty setting.
     - Epic: 2 to 3
     - Legendary: 4 to 5
 
-## Npc Class
+
+## Monster Class
+`Monster(cr, monster_type=None) -> Monster`
+
+- cr: required int, -3 to 30
+- monster_type: optional str, ["Aberration", "Beast", "Celestial", "Construct", "Dragon", "Elemental", "Fey", "Fiend", "Giant", "Humanoid", "Monstrosity", "Plant", "Ooze", "Undead"]
+
+```python
+from MonsterGen import Monster, CR
+
+monster_cr = CR(10)
+print(Monster(monster_cr, monster_type='Aberration'))
+```
+
+```
+Name: Grell
+Type: Aberration
+CR: 7
+Hit Points: 164
+Armor Class: 12
+Attack Bonus: 9
+Typical Damage: 45 - 50
+Save DC: 15
+XP Value: 2900
+```
+
+## NPC Class
 `Npc() -> Npc`
 
 Produces a random NPC.
@@ -106,7 +115,7 @@ Armor Class: 11
 Damage: 1
 ```
 
-## random_trap function
+## Random Trap Factory Function
 `random_trap(cr, dam_type=None) -> Trap`
 - cr: required int, -3 to 30
 - dam_type: optional str, ['bludgeoning', 'falling', 'piercing', 'slashing', 'poison', 'acid', 'fire', 'lightning', 'cold', 'necrotic']
@@ -129,7 +138,7 @@ Damage: 3d4 fire
 Disarm XP: 5900
 ```
 
-## monster_loot function
+## Monster Loot Factory Function
 `monster_loot(cr) -> Loot`
 - cr: required int, -3 to 30
 
@@ -145,7 +154,7 @@ Copper Coins: 1800
 Electrum Coins: 50
 ```
 
-## horde_loot function
+## Horde Loot Factory Function
 `horde_loot(cr) -> Loot`
 - cr: required int, -3 to 30
 

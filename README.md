@@ -11,29 +11,33 @@ $ pip install MonsterGen
 ```
 
 ## Monster Class
-`Monster(cr) -> Monster`
+`Monster(cr, monster_type=None) -> Monster`
+
+- cr: required int, -3 to 30
+- monster_type: optional str, ["Aberration", "Beast", "Celestial", "Construct", "Dragon", "Elemental", "Fey", "Fiend", "Giant", "Humanoid", "Monstrosity", "Plant", "Ooze", "Undead"]
 
 ```python
 from MonsterGen import Monster, CR
 
 monster_cr = CR(10)
-print(Monster(monster_cr))
+print(Monster(monster_cr, monster_type='Aberration'))
 ```
 
 ```
-Name: Wraith
-CR: 10
-Hit Points: 217
-Armor Class: 15
+Name: Grell
+Type: Aberration
+CR: 7
+Hit Points: 164
+Armor Class: 12
 Attack Bonus: 9
-Typical Damage: 63 - 68
-Save DC: 16
-XP Value: 5900
+Typical Damage: 45 - 50
+Save DC: 15
+XP Value: 2900
 ```
 
 ## CR Class
 `CR(cr) -> CR`
-- cr: int, -3 to 30
+- cr: required int, -3 to 30
 
 The CR class is a numeric system representing the relative power of a monster in D&D 5e.
 This system is a bit funky with values below 1, be careful... here be dragons!
@@ -71,9 +75,9 @@ CR: 30
 `CR.player_adapter(average_level, num_players=5, difficulty=0) -> CR`
 
 Class method for computing CR from party composition and difficulty setting.
-- average_level: int, 1 to 20
-- num_players: int, 1 to 9
-- difficulty: int, -5 to 5 
+- average_level: required int, 1 to 20
+- num_players: optional int, 1 to 9
+- difficulty: optional int, -5 to 5 
     - Stupid Easy: -5 to -4
     - Easy: -3 to -2
     - Normal: -1 to 1
@@ -104,8 +108,8 @@ Damage: 1
 
 ## random_trap function
 `random_trap(cr, dam_type=None) -> Trap`
-- cr: int, -3 to 30
-- dam_type: str, ['bludgeoning', 'falling', 'piercing', 'slashing', 'poison', 'acid', 'fire', 'lightning', 'cold', 'necrotic']
+- cr: required int, -3 to 30
+- dam_type: optional str, ['bludgeoning', 'falling', 'piercing', 'slashing', 'poison', 'acid', 'fire', 'lightning', 'cold', 'necrotic']
 
 Produces a random trap. If `dam_type` is None it will choose a random damage type.
 
@@ -127,7 +131,7 @@ Disarm XP: 5900
 
 ## monster_loot function
 `monster_loot(cr) -> Loot`
-- cr: int, -3 to 30
+- cr: required int, -3 to 30
 
 Produces random treasure for a single monster. Typically this is just coinage.
 ```python
@@ -143,7 +147,7 @@ Electrum Coins: 50
 
 ## horde_loot function
 `horde_loot(cr) -> Loot`
-- cr: int, -3 to 30
+- cr: required int, -3 to 30
 
 Produces random treasure for a boss or horde of monsters. High-quality loot with magic items appropriate to the CR.
 

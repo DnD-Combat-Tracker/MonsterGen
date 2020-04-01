@@ -5,4 +5,4 @@ from .traps import random_trap
 from .npc import Npc
 
 
-__all__ = (Monster, CR, monster_loot, horde_loot, random_trap, Npc)
+__all__ = ("Monster", "CR", "monster_loot", "horde_loot", "random_trap", "Npc")

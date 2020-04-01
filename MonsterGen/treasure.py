@@ -3,6 +3,9 @@ from Fortuna import TruffleShuffle, d, dice
 from MonsterGen.spells import random_spell
 
 
+__all__ = ("monster_loot", "horde_loot")
+
+
 def monster_loot(cr):
     if cr <= 4:
         loot = RankOneLoot

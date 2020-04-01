@@ -4,6 +4,9 @@ from MonsterGen.monster_lib import monster_stats, CR, random_monster_type
 from MonsterGen.monster_manual import random_monster_by_type
 
 
+__all__ = ("Monster", )
+
+
 class Monster:
 
     def __init__(self, cr, monster_type=None, name=None):

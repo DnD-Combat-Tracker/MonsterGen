@@ -4,6 +4,9 @@ from MonsterGen.npc_lib import random_background, random_profession
 from MonsterGen.npc_lib import random_appearance, random_mannerism, random_race
 
 
+__all__ = ("Npc", )
+
+
 class Npc:
 
     def __init__(self):

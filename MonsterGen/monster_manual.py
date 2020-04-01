@@ -1,6 +1,9 @@
 from Fortuna import FlexCat
 
 
+__all__ = ("random_monster_by_type", )
+
+
 random_monster_by_type = FlexCat({
     'Aberration': [
         'Aboleth', 'Beholder', 'Spectator', 'Chuul', 'Cloaker',

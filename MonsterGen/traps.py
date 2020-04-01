@@ -1,8 +1,9 @@
 import itertools
-
 from Fortuna import TruffleShuffle, FlexCat
 from MonsterGen.monster_lib import CR
-from MonsterGen.treasure import Loot
+
+
+__all__ = ("random_trap", )
 
 
 class Trap:
@@ -52,7 +53,6 @@ class Trap:
             "Putrid Spores", "Cloud of Decay", "Energy Drain", "Beam of Entropy",
         ),
     }, key_bias="truffle_shuffle", val_bias="truffle_shuffle")
-    treasure = Loot()
 
     def __init__(self, cr, dam_type=None):
         self.cr = CR(cr)

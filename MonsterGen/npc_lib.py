@@ -1,6 +1,12 @@
 from Fortuna import QuantumMonty, TruffleShuffle
 
 
+__all__ = (
+    "random_human", "random_race", "random_appearance", "random_mannerism",
+    "random_profession", "random_background",
+)
+
+
 random_human = QuantumMonty((
     "Human Peasant",
     "Human Villager",

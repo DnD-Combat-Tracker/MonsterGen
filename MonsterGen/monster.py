@@ -1,5 +1,6 @@
+import itertools
 from Fortuna import distribution_range, middle_linear, plus_or_minus_linear
-from MonsterGen.monster_lib import monster_stats, CR, rank_by_tier
+from MonsterGen.monster_lib import monster_stats, CR
 from MonsterGen.monster_lib import random_monster_type
 from MonsterGen.monster_manual import random_monster_by_type
 
@@ -9,8 +10,6 @@ class Monster:
     def __init__(self, cr, monster_type=None, name=None):
         self.monster_type = monster_type if monster_type else random_monster_type()
         self.cr = CR(cr) if type(cr) == int else cr
-        self.tier = self.cr.tier
-        self.rank = rank_by_tier(str(self.tier))
         self.name = name if name else random_monster_by_type(self.monster_type)
         self.variance = plus_or_minus_linear(3)
         self.hp_range = monster_stats["HP Range"][self.cr.key]
@@ -39,10 +38,11 @@ class Monster:
 
     def __str__(self):
         output = (f"{k}: {v}" for k, v in self.to_dict().items())
-        return '\n'.join(output)
+        return '\n'.join(itertools.chain(output, ('',)))
 
 
 if __name__ == '__main__':
     print()
     monster_cr = CR.party_adapter(average_level=3, num_players=6, difficulty=3)
+    print(Monster(monster_cr))
     print(Monster(monster_cr))

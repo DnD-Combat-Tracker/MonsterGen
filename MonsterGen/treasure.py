@@ -63,21 +63,17 @@ class Loot:
         return len(self.magic_items)
 
     def reduce_loot(self):
-        output = ['']
+        output = []
         for coin in self.coinage:
             if self.coinage[coin] > 0:
                 if coin == "Gems" or coin == "Jewels":
-                    output.append(f"{coin} {self.coinage[coin]} GP")
+                    output.append(f"{coin}: {self.coinage[coin]} GP")
                 else:
-                    output.append(f"{self.coinage[coin]} {coin} Coins")
+                    output.append(f"{coin} Coins: {self.coinage[coin]}")
         if self.magic_items:
             for itm in sorted(list(set(self.magic_items))):
                 output.append(itm)
-        if len(output) == 2:
-            output = output[1:2]
-        elif len(output) == 1:
-            output = ['Empty']
-        return "\n".join(output) if len(output) > 1 else output[0]
+        return "\n".join(output)
 
     def to_dict(self):
         output = {

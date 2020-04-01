@@ -1,46 +1,17 @@
 # MonsterGen
 
+MonsterGen is based on Fortuna and Storm by Robert Sharp.
+- Fortuna: Random Value Toolkit for Generative Modeling.
+- Storm: High-performance Random Number Engine.
+
+
 ## Installation
 ```shell script
 $ pip install MonsterGen
 ```
 
 ## Monster Class
-```python
-from MonsterGen import Monster
-
-print(Monster(10))
-```
-
-```
-Name: Displacer Beast
-CR: 10
-Hit Points: 217
-Armor Class: 17
-Attack Bonus: 7
-Typical Damage: 63 - 68
-Save DC: 16
-XP Value: 5900
-```
-
-## Alternate Calling Signatures
-```python
-from MonsterGen import Monster, CR
-
-monster_cr = CR.party_adapter(average_level=10, num_players=3, difficulty=0)
-print(Monster(monster_cr))
-```
-
-```
-Name: Wyvern
-CR: 10
-Hit Points: 214
-Armor Class: 18
-Attack Bonus: 6
-Typical Damage: 63 - 68
-Save DC: 16
-XP Value: 5900
-```
+`Monster(cr) -> Monster`
 
 ```python
 from MonsterGen import Monster, CR
@@ -61,7 +32,8 @@ XP Value: 5900
 ```
 
 ## CR Class
-`CR(cr: int)`
+`CR(cr) -> CR`
+- cr: int, -3 to 30
 
 The CR class is a numeric system representing the relative power of a monster in D&D 5e.
 This system is a bit funky with values below 1, be careful... here be dragons!
@@ -96,18 +68,90 @@ CR: 30
 ```
 
 ### Party Adapter Method (Factory Function)
-`CR.player_adapter(average_level: int, num_players: int, difficulty: int) -> CR`
+`CR.player_adapter(average_level, num_players=5, difficulty=0) -> CR`
 
 Class method for computing CR from party composition and difficulty setting.
+- average_level: int, 1 to 20
+- num_players: int, 1 to 9
+- difficulty: int, -5 to 5 
 
-#### Average Character Level (rounded down)
-Required Integer, 1 to 20 clamped
-
-#### Number of Player Characters
-Optional Integer, 1 to 9 clamped, default 5
-
-#### Difficulty Rating
-Optional Integer, -5 to 5 clamped, default 0
 
     Stupid Easy    Easy    Norm    Epic    Legendary
           -5        -3      0       3          5
+
+
+## Npc Class
+`Npc() -> Npc`
+
+```python
+from MonsterGen import Npc
+
+print(Npc())
+```
+
+```
+Profession: Bookbinder
+Race: Tiefling
+Background: Soldier
+Appearance: Flamboyant or outlandish clothes
+Mannerism: Speaks in rhyme
+Hit Points: 8
+Armor Class: 11
+Damage: 1
+```
+
+## random_trap function
+`random_trap(cr, dam_type=None) -> Trap`
+- cr: int, -3 to 30
+- dam_type: str, ['bludgeoning', 'falling', 'piercing', 'slashing', 'poison', 'acid', 'fire', 'lightning', 'cold', 'necrotic']
+
+```python
+from MonsterGen import random_trap
+
+print(random_trap(10, dam_type="falling"))
+```
+
+```
+Name: Greased Slide
+Type: Dangerous Trap
+CR: 10
+Spot & Disarm: DC: 12
+Save vs: CON DC 15 for half damage
+Damage: 3d6 falling
+Disarm XP: 5900
+```
+
+## monster_loot function
+`monster_loot(cr) -> Loot`
+- cr: int, -3 to 30
+
+```python
+from MonsterGen import monster_loot
+
+print(monster_loot(10))
+```
+
+```
+Copper Coins: 1800
+Electrum Coins: 50
+```
+
+## horde_loot function
+`horde_loot(cr) -> Loot`
+- cr: int, -3 to 30
+
+```python
+from MonsterGen import horde_loot
+
+print(horde_loot(10))
+```
+
+```
+Copper Coins: 400
+Silver Coins: 7000
+Gold Coins: 2200
+Platinum Coins: 140
+Jewels: 50 GP
+Oil of etherealness
+Quaal's feather token
+```

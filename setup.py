@@ -16,12 +16,12 @@ setup(
     author="Robert Sharp",
     packages=['MonsterGen'],
     author_email="webmaster@sharpdesigndigital.com",
-    version="0.0.1",
+    version="0.0.2",
     description="Random Monster Generator",
     long_description=long_description,
     long_description_content_type="text/markdown",
     classifiers=[
-        dev_status["Alpha"],
+        dev_status["Beta"],
         "Programming Language :: Python :: 3.8",
     ],
     keywords=[

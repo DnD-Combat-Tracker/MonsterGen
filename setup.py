@@ -15,6 +15,7 @@ setup(
     name="MonsterGen",
     author="Robert Sharp",
     packages=['MonsterGen'],
+    install_requires=["Fortuna"],
     author_email="webmaster@sharpdesigndigital.com",
     version="0.0.4",
     description="Random Monster Generator",

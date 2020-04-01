@@ -25,7 +25,7 @@ setup(
         "Programming Language :: Python :: 3.8",
     ],
     keywords=[
-        "Monster", "D&D",
+        "D&D", "Monster", "Trap", "Treasure", "NPC", "Loot", "Generator",
     ],
     python_requires='>=3.6',
 )

@@ -116,16 +116,16 @@ Produces a random trap. If `dam_type` is None it will choose a random damage typ
 ```python
 from MonsterGen import random_trap
 
-print(random_trap(10, dam_type="falling"))
+print(random_trap(10, dam_type="fire"))
 ```
 
 ```
-Name: Greased Slide
-Type: Dangerous Trap
+Name: Inferno
+Type: Minor Trap
 CR: 10
-Spot & Disarm: DC: 12
-Save vs: CON DC 15 for half damage
-Damage: 3d6 falling
+Spot & Disarm: DC: 10
+Save vs: WIS DC 11 for half damage
+Damage: 3d4 fire
 Disarm XP: 5900
 ```
 

@@ -14,6 +14,7 @@ dev_status = {
 setup(
     name="MonsterGen",
     author="Robert Sharp",
+    packages=['MonsterGen'],
     author_email="webmaster@sharpdesigndigital.com",
     version="0.0.1",
     description="Random Monster Generator",

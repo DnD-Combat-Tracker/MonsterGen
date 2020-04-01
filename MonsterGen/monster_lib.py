@@ -383,6 +383,98 @@ random_monster = FlexCat({
     ),
 })
 
+monster_types = (
+    "Aberration",
+    "Beast",
+    "Celestial",
+    "Construct",
+    "Dragon",
+    "Elemental",
+    "Fey",
+    "Fiend",
+    "Giant",
+    "Humanoid",
+    "Monstrosity",
+    "Plant",
+    "Ooze",
+    "Undead",
+)
+
+random_monster_type = TruffleShuffle(monster_types)
+
+random_undead = FlexCat({
+    'minion': (
+        "Ghostly Villager",
+        "Crawling Mist",
+        "Willow-the-wisp",
+        "Specter",
+        "Zombie",
+        "Crawling Claw",
+        "Vampire Spawn",
+        "Pestilence Rat",
+        "Skeleton",
+    ),
+    'monster': (
+        "Spectral Beast",
+        "Lost Soul",
+        "Weeping Apparition",
+        "Ghost",
+        "Flameskull",
+        "Ghoul",
+        "Frozen Walker",
+        "Skeletal Monstrosity",
+        "Fledgling Vampire",
+    ),
+    'villain': (
+        "Tortured Spirit",
+        "Shade",
+        "Wraith",
+        "Banshee",
+        "Spectral Giant",
+        "Mummy",
+        "Lich",
+        "Vampire",
+        "Mummy Lord",
+        "Death Knight",
+    ),
+    'boss': (
+        "Wight",
+        "Nightmare",
+        "Haunted Horror",
+        "Death Tyrant",
+        "Ancient Vampire",
+        "Demilich",
+    ),
+    'campaign boss': (
+        "Soul Reaper",
+        "Poltergeist",
+        "Spectral Dragon",
+        "Mummy Pharaoh",
+        "Lich King",
+        "Dracolich",
+    ),
+})
+
+
+def random_monster_by_type(monster_type):
+    # return {
+    #     "Aberration": random_undead,
+    #     "Beast": random_undead,
+    #     "Celestial": random_undead,
+    #     "Construct": random_undead,
+    #     "Dragon": random_undead,
+    #     "Elemental": random_undead,
+    #     "Fey": random_undead,
+    #     "Fiend": random_undead,
+    #     "Giant": random_undead,
+    #     "Humanoid": random_undead,
+    #     "Monstrosity": random_undead,
+    #     "Plant": random_undead,
+    #     "Ooze": random_undead,
+    #     "Undead": random_undead,
+    # }[monster_type]
+    return random_monster_by_type(monster_type)
+
 
 if __name__ == '__main__':
     from MonsterGen import CR

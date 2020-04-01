@@ -74,14 +74,16 @@ Class method for computing CR from party composition and difficulty setting.
 - average_level: int, 1 to 20
 - num_players: int, 1 to 9
 - difficulty: int, -5 to 5 
-
-
-    Stupid Easy    Easy    Norm    Epic    Legendary
-          -5        -3      0       3          5
-
+    - Stupid Easy: -5 to -4
+    - Easy: -3 to -2
+    - Normal: -1 to 1
+    - Epic: 2 to 3
+    - Legendary: 4 to 5
 
 ## Npc Class
 `Npc() -> Npc`
+
+Produces a random NPC.
 
 ```python
 from MonsterGen import Npc
@@ -105,6 +107,8 @@ Damage: 1
 - cr: int, -3 to 30
 - dam_type: str, ['bludgeoning', 'falling', 'piercing', 'slashing', 'poison', 'acid', 'fire', 'lightning', 'cold', 'necrotic']
 
+Produces a random trap. If `dam_type` is None it will choose a random damage type.
+
 ```python
 from MonsterGen import random_trap
 
@@ -125,6 +129,7 @@ Disarm XP: 5900
 `monster_loot(cr) -> Loot`
 - cr: int, -3 to 30
 
+Produces random treasure for a single monster. Typically this is just coinage.
 ```python
 from MonsterGen import monster_loot
 
@@ -139,6 +144,8 @@ Electrum Coins: 50
 ## horde_loot function
 `horde_loot(cr) -> Loot`
 - cr: int, -3 to 30
+
+Produces random treasure for a boss or horde of monsters. High-quality loot with magic items appropriate to the CR.
 
 ```python
 from MonsterGen import horde_loot

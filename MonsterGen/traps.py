@@ -100,7 +100,7 @@ class Trap:
             "Name": self.name,
             "Type": self.type,
             "CR": self.cr.string,
-            "Spot & Disarm: DC": self.spot_dc,
+            "Spot & Disarm DC": self.spot_dc,
             "Save vs": f"{self.save_vs} DC {self.save_dc} for half damage",
             "Damage": f"{self.damage} {self.damage_type}",
             "Disarm XP": self.xp,

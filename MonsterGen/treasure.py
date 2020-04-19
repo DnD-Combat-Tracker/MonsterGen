@@ -6,30 +6,6 @@ from MonsterGen.spells import random_spell
 __all__ = ("monster_loot", "horde_loot")
 
 
-def monster_loot(cr):
-    if cr <= 4:
-        loot = RankOneLoot
-    elif cr <= 10:
-        loot = RankTwoLoot
-    elif cr <= 16:
-        loot = RankThreeLoot
-    else:
-        loot = RankFourLoot
-    return loot()
-
-
-def horde_loot(cr):
-    if cr <= 4:
-        loot = RankOneHoardLoot
-    elif cr <= 10:
-        loot = RankTwoHoardLoot
-    elif cr <= 16:
-        loot = RankThreeHoardLoot
-    else:
-        loot = RankFourHoardLoot
-    return loot()
-
-
 class Loot:
     """ Base Class for loot, starts empty """
 
@@ -799,6 +775,38 @@ random_ammunition = TruffleShuffle((
     lambda: f"Box of {d(3) * 10} crossbow bolts",
     lambda: f"Bag of {d(3) * 10} sling stones",
 ))
+
+
+def monster_loot(cr):
+    if cr <= 4:
+        loot = RankOneLoot
+    elif cr <= 10:
+        loot = RankTwoLoot
+    elif cr <= 16:
+        loot = RankThreeLoot
+    else:
+        loot = RankFourLoot
+    return loot()
+
+
+def horde_loot(cr):
+    if cr <= 4:
+        loot = RankOneHoardLoot
+    elif cr <= 10:
+        loot = RankTwoHoardLoot
+    elif cr <= 16:
+        loot = RankThreeHoardLoot
+    else:
+        loot = RankFourHoardLoot
+    return loot()
+
+
+def random_loot(cr, loot_type='common'):
+    loot = {
+        'common': monster_loot,
+        'rare': horde_loot,
+    }
+    return loot[loot_type](cr)
 
 
 if __name__ == '__main__':
